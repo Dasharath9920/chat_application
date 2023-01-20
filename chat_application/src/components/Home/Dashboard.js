@@ -4,6 +4,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import MoodRoundedIcon from '@mui/icons-material/MoodRounded';
 import AttachFileRoundedIcon from '@mui/icons-material/AttachFileRounded';
+import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import ChatDashboard from '../ChatDashboard';
 
 function Home() {
@@ -43,6 +44,7 @@ function Home() {
             <SearchIcon sx={{width: 30, height: 30, color: 'rgb(93, 93, 93)'}}/>
             <input type="text" placeholder='Type a message'/>
         </div>
+        <SendRoundedIcon sx={{width: 30, height: 30, color: 'rgb(93, 93, 93)'}}/>
       </div>
     </div>
   )
