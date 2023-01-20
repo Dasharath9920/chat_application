@@ -26,7 +26,7 @@ function Sidebar() {
       </div>
 
       <div className="search-container">
-        <SearchIcon sx={{width: 30, height: 30}}/>
+        <SearchIcon sx={{width: 30, height: 30, color: 'rgb(93, 93, 93)'}}/>
         <input type="text" placeholder='Search'/>
       </div>
 
