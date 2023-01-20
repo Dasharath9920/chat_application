@@ -5,6 +5,8 @@ import ChatSegment from '../ChatSegment';
 
 function Sidebar() {
 
+  let profilePic = require('../../assets/images/dasharath.jpeg');
+
   let profiles = [
     {
       name: 'Dasharath',
@@ -19,11 +21,11 @@ function Sidebar() {
   return (
     <div className='sidebar'>
       <div className="sidebar-navbar">
-        <div className="avatar"><Avatar alt='avatar' sx={{width: 60, height: 60}}></Avatar></div>
+        <div className="avatar"><Avatar alt='avatar' src={profilePic} sx={{width: 50, height: 50}}></Avatar></div>
         <div className="sidebar-navbar__icons"></div>
       </div>
 
-      <div className="sidebar-search-container">
+      <div className="search-container">
         <SearchIcon sx={{width: 30, height: 30}}/>
         <input type="text" placeholder='Search'/>
       </div>

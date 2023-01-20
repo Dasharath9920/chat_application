@@ -16,12 +16,12 @@
 }
 
 .sidebar-navbar{
-  background-color: rgb(238, 238, 238);
+  background-color: rgb(242, 242, 242);
   border-right: 1px solid lightgrey;
   padding: 10px 20px;
 }
 
-.sidebar-search-container{
+.search-container{
   height: 50px;
   padding: 0px 30px;
   display: flex;
@@ -30,11 +30,12 @@
 
   margin: 10px;
   border-radius: 10px;
-  background-color: rgb(238, 238, 238);
+  background-color: rgb(242, 242, 242);
 }
 
-.sidebar-search-container input{
-  width: 90%;
+.search-container input{
+  width: 100%;
+  margin-left: 10px;
   font-size: 1.2rem;
 }
 
@@ -54,7 +55,35 @@
 
 /* end of sidebar */
 
+/* home */
+
 .home{
   width: 100%;
-  background-color: white;
 }
+
+.home-navbar{
+  background-color: rgb(242, 242, 242);
+  padding: 0px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home-navbar__left, .home-navbar__right{
+  display: flex;
+}
+
+.chat-header{
+  margin-left: 20px;
+}
+
+.chat-profile-name{
+  font-size: 1.3rem;
+}
+
+.online-status{
+  color: rgb(113, 113, 113);
+  line-height: 25px;
+}
+
+/* end of home */
