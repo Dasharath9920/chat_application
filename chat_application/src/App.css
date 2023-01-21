@@ -90,6 +90,10 @@
   display: flex;
 }
 
+.dashboard-navbar .search-container{
+  background-color: white;
+}
+
 .chat-header{
   margin-left: 20px;
   display: flex;
@@ -125,7 +129,7 @@
 /* chat dashboard */
 
 .chat-dashboard{
-  padding: 40px 60px 0px 60px;
+  padding: 40px 60px 10px 60px;
   height: 100%;
   overflow-y: scroll;
 }
@@ -138,6 +142,7 @@
   max-width: 500px;
   margin-top: 5px;
   position: relative;
+  overflow-wrap: break-word;
 }
 
 .my-message{
@@ -177,11 +182,15 @@
   width: 200px;
   text-align: center;
   right: 10px;
-  top: 20px;
+  bottom: -40px;
 }
 
 .message-options-container button{
   padding: 10px 20px;
   font-size: 1.2rem;
+}
+
+.message-options-container:hover{
+  background-color: rgb(231, 231, 231);
 }
 /* end of chat dashboard */

@@ -27,7 +27,7 @@ function ChatDashboard() {
   },[myState.fetchMessages])
 
   return (
-    <div className='chat-dashboard'>
+    <div className='chat-dashboard' id='chat-dashboard'>
         {
           messages.map((message,index) => {
             return <MessageBox 

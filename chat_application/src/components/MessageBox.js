@@ -2,15 +2,16 @@ import React, {useState, useEffect} from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 function MessageBox({message,time,index,id}) {
+
   let status = index%2 === 0? 'from': 'to';
   const [showOptions, setShowOptions] = useState(false);
 
   const deleteMessage = () => {
-    
+
   }
 
   return (
-    <div className={status === 'to'? 'message-container': 'message-container my-message'}>
+    <div className={status === 'to'? 'message-container': 'message-container my-message'} onMouseEnter={() => setShowOptions(true)} onMouseLeave={() => setShowOptions(false)}>
         <button className='message-more-btn' onClick={() => setShowOptions(!showOptions)}><ExpandMoreIcon sx={{width: 40,height: 35}}/></button>
         <p className='message'>{message}</p>
         <p className='time'>{time}</p>

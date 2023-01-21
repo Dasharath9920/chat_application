@@ -17,7 +17,9 @@ function Home() {
 
   let profile = myState.profiles[myState.currentChat];
 
-  const sendMessage = async () => {
+  const sendMessage = async (event) => {
+    event.preventDefault();
+
     if(!message.length)
       return;
     
@@ -30,11 +32,16 @@ function Home() {
     });
 
     setMessage('');
+    let dashboardElement = document.getElementById('chat-dashboard');
     
     dispatch({
       type: actionTypeEnum.FETCH_MESSAGES,
       fetchMessages: true
     })
+
+    setTimeout(() => {
+      dashboardElement.scrollTop = dashboardElement.scrollHeight;
+    },100)
   }
 
   return (
@@ -52,23 +59,23 @@ function Home() {
           <div className="search-container">
             <SearchIcon sx={{width: 30, height: 30, color: 'rgb(93, 93, 93)'}}/>
             <input type="text" placeholder='Search for a chat'/>
-            <button><MoreVertIcon sx={{width: 30, height: 30, color: 'rgb(93, 93, 93)'}}/></button>
           </div>
+          <button><MoreVertIcon sx={{width: 30, height: 30, color: 'rgb(93, 93, 93)'}}/></button>
         </div>
       </div>
       
       <ChatDashboard />
 
-      <div className="dashboard-footer">
+      <form className="dashboard-footer" onSubmit={sendMessage}>
         <MoodRoundedIcon sx={{width: 40, height: 40, color: 'rgb(93, 93, 93)'}}/>
         <AttachFileRoundedIcon sx={{width: 30, height: 30, color: 'rgb(93, 93, 93)'}}/>
         <div className="search-container">
             <input type="text" placeholder='Type a message' value={message} onChange={(e) => setMessage(e.target.value)}/>
         </div>
-        <button onClick={sendMessage}>
+        <button type='submit' onClick={(e) => sendMessage(e)}>
           <SendRoundedIcon sx={{width: 30, height: 30, color: message.length > 0? 'rgb(42, 202, 251)': 'rgb(93, 93, 93)'}}/>
         </button>
-      </div>
+      </form>
     </div>
   )
 }
