@@ -7,15 +7,34 @@ import MoodRoundedIcon from '@mui/icons-material/MoodRounded';
 import AttachFileRoundedIcon from '@mui/icons-material/AttachFileRounded';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import ChatDashboard from '../ChatDashboard';
+import { actionTypeEnum } from '../../redux/actionTypes';
 
 function Home() {
   const myState = useSelector(state => state.updateProperties);
+  const dispatch = useDispatch();
+
   const [message, setMessage] = useState('');
 
   let profile = myState.profiles[myState.currentChat];
 
-  const sendMessage = () => {
-    console.log('sending ',message);
+  const sendMessage = async () => {
+    if(!message.length)
+      return;
+    
+    await fetch('/messages/create/',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(message)
+    });
+
+    setMessage('');
+    
+    dispatch({
+      type: actionTypeEnum.FETCH_MESSAGES,
+      fetchMessages: true
+    })
   }
 
   return (

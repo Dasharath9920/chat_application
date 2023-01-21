@@ -44,7 +44,7 @@ function Sidebar() {
       {
         profiles.length === 0 &&
         <div className="empty-chat">
-          <p>No results found</p>
+          <p>No results found for '{searchText}'</p>
         </div>
       }
     </div>
