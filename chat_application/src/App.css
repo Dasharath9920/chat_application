@@ -143,6 +143,8 @@
   margin-top: 5px;
   position: relative;
   overflow-wrap: break-word;
+  display: flex;
+  align-items: center;
 }
 
 .my-message{
@@ -152,6 +154,12 @@
 
 .message-container .message{
   font-size: 1.1rem;
+}
+
+.message-container .deleted{
+  font-style: italic;
+  color: grey;
+  margin-left: 10px;
 }
 
 .message-container .time{

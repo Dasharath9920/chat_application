@@ -31,11 +31,9 @@ function ChatDashboard() {
         {
           messages.map((message,index) => {
             return <MessageBox 
-                    message={message.message} 
-                    key={index} 
-                    time = {String(message.time).substring(11,16)} 
-                    index = {index}
-                    id = {message.id}/>
+                    message={message} 
+                    key={index}
+                    index = {index}/>
           })
         }
     </div>
