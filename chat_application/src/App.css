@@ -59,6 +59,12 @@
   margin-left: 20px;
 }
 
+.empty-chat{
+  padding: 30px;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
 /* end of sidebar */
 
 

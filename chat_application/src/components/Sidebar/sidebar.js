@@ -9,8 +9,16 @@ function Sidebar() {
   const myState = useSelector(state => state.updateProperties);
   const dispatch = useDispatch();
 
+  const [searchText, setSearchText] = useState('');
+  const [profiles, setProfiles] = useState(myState.profiles);
+
   const myProfile = myState.myProfile;
-  const profiles = myState.profiles;
+
+  const filterChatProfiles = (searchText) => {
+    setSearchText(searchText);
+    let filteredProfiles = myState.profiles.filter(profile => profile.name.toLowerCase().includes(searchText.toLowerCase()));
+    setProfiles(filteredProfiles);
+  }
 
   return (
     <div className='sidebar'>
@@ -21,7 +29,7 @@ function Sidebar() {
 
       <div className="search-container">
         <SearchIcon sx={{width: 30, height: 30, color: 'rgb(93, 93, 93)'}}/>
-        <input type="text" placeholder='Search'/>
+        <input type="text" placeholder='Search' value={searchText} onChange={(e) => filterChatProfiles(e.target.value)}/>
       </div>
 
         {
@@ -36,7 +44,7 @@ function Sidebar() {
       {
         profiles.length === 0 &&
         <div className="empty-chat">
-          <h3>No chat found</h3>
+          <p>No results found</p>
         </div>
       }
     </div>

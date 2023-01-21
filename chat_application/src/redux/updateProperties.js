@@ -9,12 +9,14 @@ const initializer = {
         {
             name: 'Dasharath',
             image: require('../assets/images/dasharath.jpeg'),
-            isOnline: false
+            isOnline: false,
+            lastUpdated: undefined
         },
         {
             name: 'Sweet',
             image: require('../assets/images/sweet.jpg'),
-            isOnline: true
+            isOnline: true,
+            lastUpdated: undefined
         }
     ]
 };

@@ -44,7 +44,6 @@ function Home() {
         <MoodRoundedIcon sx={{width: 40, height: 40, color: 'rgb(93, 93, 93)'}}/>
         <AttachFileRoundedIcon sx={{width: 30, height: 30, color: 'rgb(93, 93, 93)'}}/>
         <div className="search-container">
-            <SearchIcon sx={{width: 30, height: 30, color: 'rgb(93, 93, 93)'}}/>
             <input type="text" placeholder='Type a message' value={message} onChange={(e) => setMessage(e.target.value)}/>
         </div>
         <button onClick={sendMessage}>
