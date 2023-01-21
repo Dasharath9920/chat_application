@@ -1,27 +1,21 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Avatar } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import ChatSegment from '../ChatSegment';
 
 function Sidebar() {
 
-  let profilePic = require('../../assets/images/dasharath.jpeg');
+  const myState = useSelector(state => state.updateProperties);
+  const dispatch = useDispatch();
 
-  let profiles = [
-    {
-      name: 'Dasharath',
-      image: require('../../assets/images/dasharath.jpeg')
-    },
-    {
-      name: 'Sweet',
-      image: require('../../assets/images/sweet.jpg')
-    }
-  ]
+  const myProfile = myState.myProfile;
+  const profiles = myState.profiles;
 
   return (
     <div className='sidebar'>
       <div className="sidebar-navbar">
-        <div className="avatar"><Avatar alt='avatar' src={profilePic} sx={{width: 50, height: 50}}></Avatar></div>
+        <div className="avatar"><Avatar alt='avatar' src={myProfile.profilePic} sx={{width: 50, height: 50}}></Avatar></div>
         <div className="sidebar-navbar__icons"></div>
       </div>
 
@@ -34,13 +28,13 @@ function Sidebar() {
           profiles.length > 0 &&
           <div className="chat-container">
               {profiles.map((profile,index) => {
-                return <ChatSegment name={profile.name} image={profile.image} key={index}/>
+                return <ChatSegment name={profile.name} image={profile.image} index={index} key={index}/>
               })}
           </div>
         }
 
       {
-        profiles.length == 0 &&
+        profiles.length === 0 &&
         <div className="empty-chat">
           <h3>No chat found</h3>
         </div>

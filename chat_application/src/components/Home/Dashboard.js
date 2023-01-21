@@ -1,4 +1,5 @@
-import React from 'react';
+import {  React,useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Avatar } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -8,12 +9,14 @@ import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import ChatDashboard from '../ChatDashboard';
 
 function Home() {
+  const myState = useSelector(state => state.updateProperties);
+  const [message, setMessage] = useState('');
 
-  let profile = {
-    name: 'Sweet',
-    image: require('../../assets/images/sweet.jpg')
+  let profile = myState.profiles[myState.currentChat];
+
+  const sendMessage = () => {
+    console.log('sending ',message);
   }
-  let isOnline = true;
 
   return (
     <div className='dashboard'>
@@ -22,14 +25,14 @@ function Home() {
           <Avatar alt='profile pic' src={profile.image} sx={{width: 50, height: 50}}></Avatar>
           <div className="chat-header">
             <p className='chat-profile-name'>{profile.name}</p>
-            {isOnline && <p className='online-status'>online</p>}
+            {profile.isOnline && <p className='online-status'>online</p>}
           </div>
         </div>
 
         <div className="dashboard-navbar__right">
           <div className="search-container">
             <SearchIcon sx={{width: 30, height: 30, color: 'rgb(93, 93, 93)'}}/>
-            <input type="text" placeholder='Search for chat'/>
+            <input type="text" placeholder='Search for a chat'/>
             <button><MoreVertIcon sx={{width: 30, height: 30, color: 'rgb(93, 93, 93)'}}/></button>
           </div>
         </div>
@@ -42,9 +45,11 @@ function Home() {
         <AttachFileRoundedIcon sx={{width: 30, height: 30, color: 'rgb(93, 93, 93)'}}/>
         <div className="search-container">
             <SearchIcon sx={{width: 30, height: 30, color: 'rgb(93, 93, 93)'}}/>
-            <input type="text" placeholder='Type a message'/>
+            <input type="text" placeholder='Type a message' value={message} onChange={(e) => setMessage(e.target.value)}/>
         </div>
-        <SendRoundedIcon sx={{width: 30, height: 30, color: 'rgb(93, 93, 93)'}}/>
+        <button onClick={sendMessage}>
+          <SendRoundedIcon sx={{width: 30, height: 30, color: message.length > 0? 'rgb(42, 202, 251)': 'rgb(93, 93, 93)'}}/>
+        </button>
       </div>
     </div>
   )
